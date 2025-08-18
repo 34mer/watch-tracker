@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: watch-dashboard
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run dashboard.py --server.port 10000
+    envVars:
+      - key: PORT
+        value: 10000
+
+  - type: worker
+    name: watch-scraper
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python scraper.py
+    schedule: "*/180 * * * *"  # every 3 hours

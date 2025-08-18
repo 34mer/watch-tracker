@@ -2,6 +2,7 @@ services:
   - type: web
     name: watch-dashboard
     runtime: python
+    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: streamlit run dashboard.py --server.port 10000
     envVars:
@@ -10,6 +11,7 @@ services:
   - type: cron
     name: watch-scraper
     runtime: python
+    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: python scraper.py
     schedule: "*/180 * * * *"  # every 3 hours

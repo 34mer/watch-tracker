@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: watch-dashboard
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: bash run.sh
+    envVars:
+      - key: PORT
+        value: 10000
